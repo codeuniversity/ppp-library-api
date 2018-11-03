@@ -4,9 +4,13 @@ class ConfigsController < ApplicationController
 
   # GET /configs
   def index
-    @configs = Config.all
+    @configs = Config
+      .left_joins(:votes)
+      .group(:id)
+      .select('configs.*, count(*) as vote_count')
+      .order('vote_count desc')
 
-    render json: @configs
+      render json: @configs
   end
 
   # GET /configs/1
@@ -17,6 +21,7 @@ class ConfigsController < ApplicationController
   # POST /configs
   def create
     @config = Config.new(config_params)
+    @config.user = @current_user
 
     if @config.save
       render json: @config, status: :created, location: @config
