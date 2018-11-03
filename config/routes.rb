@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :config_tags
   resources :categories
   resources :votes
   resources :configs

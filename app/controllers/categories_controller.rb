@@ -17,6 +17,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   def create
     @category = Category.new(category_params)
+    @category.user = @current_user
 
     if @category.save
       render json: @category, status: :created, location: @category
@@ -47,6 +48,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def category_params
-      params.require(:category).permit(:config_id, :user_id)
+      params.require(:category).permit(:config_id)
     end
 end
