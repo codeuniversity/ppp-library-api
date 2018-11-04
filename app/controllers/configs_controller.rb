@@ -10,7 +10,7 @@ class ConfigsController < ApplicationController
     @configs = Config
       .left_joins(:votes)
       .group(:id)
-      .select('configs.*, count(*) as vote_count')
+      .select('configs.*, count(votes.id) as vote_count')
       .order('vote_count desc')
       .limit(limit)
       .offset(offset)
