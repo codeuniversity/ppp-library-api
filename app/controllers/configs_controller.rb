@@ -1,5 +1,5 @@
 class ConfigsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :create, :update, :destroy]
   before_action :set_config, only: [:show, :update, :destroy]
 
   # GET /configs

@@ -1,5 +1,5 @@
 class ConfigTagsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :destroy]
   before_action :set_config_tag, only: [:show, :update, :destroy]
 
   # GET /config_tags
