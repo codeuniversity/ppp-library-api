@@ -37,7 +37,7 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1
   def destroy
-    return if unpermitted_delete(@config)
+    return if unpermitted_delete(@category)
 
     @category.destroy
   end

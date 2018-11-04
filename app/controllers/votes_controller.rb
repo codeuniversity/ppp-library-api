@@ -36,7 +36,7 @@ class VotesController < ApplicationController
 
   # DELETE /votes/1
   def destroy
-    return if unpermitted_delete(@config)
+    return if unpermitted_delete(@vote)
 
     @vote.destroy
   end
