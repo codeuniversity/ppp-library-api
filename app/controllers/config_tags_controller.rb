@@ -18,6 +18,8 @@ class ConfigTagsController < ApplicationController
   def create
     @config_tag = ConfigTag.new(config_tag_params)
 
+    return if unpermitted_create(@config_tag)
+
     if @config_tag.save
       render json: @config_tag, status: :created, location: @config_tag
     else
@@ -50,5 +52,9 @@ class ConfigTagsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def config_tag_params
       params.require(:config_tag).permit(:config_id, :category_id)
+    end
+
+    def create_allowed?
+      @config_tag.config&.user == @current_user
     end
 end
