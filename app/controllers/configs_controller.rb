@@ -1,6 +1,4 @@
 class ConfigsController < ApplicationController
-  include Permission
-
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_config, only: [:show, :update, :destroy]
 
