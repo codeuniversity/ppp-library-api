@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :votes, except: :update
   resources :configs do
     delete 'vote', module: 'configs', to: 'configs/votes#destroy'
+    resources :categories, module: 'configs', only: :destroy
   end
   mount_devise_token_auth_for 'User', at: 'auth', controllers: {
     omniauth_callbacks: "overrides/omniauth_callbacks",
