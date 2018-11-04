@@ -4,11 +4,16 @@ class ConfigsController < ApplicationController
 
   # GET /configs
   def index
+    limit = (params[:limit] || 20).to_i
+    offset = (params[:offset] || 0).to_i
+
     @configs = Config
       .left_joins(:votes)
       .group(:id)
       .select('configs.*, count(*) as vote_count')
       .order('vote_count desc')
+      .limit(limit)
+      .offset(offset)
 
       render json: @configs
   end
@@ -32,7 +37,7 @@ class ConfigsController < ApplicationController
 
   # PATCH/PUT /configs/1
   def update
-    return if unpermitted_update(@config)
+    return if unpermitted_update(@cconfig)
 
     if @config.update(config_params)
       render json: @config
