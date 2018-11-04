@@ -1,4 +1,6 @@
 class ConfigsController < ApplicationController
+  include Permission
+
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_config, only: [:show, :update, :destroy]
 
@@ -41,6 +43,8 @@ class ConfigsController < ApplicationController
 
   # DELETE /configs/1
   def destroy
+    return if unpermitted_delete(@config)
+
     @config.destroy
   end
 

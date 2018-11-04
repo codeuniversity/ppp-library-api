@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :configs
+  has_many :categories
+  has_many :votes
 end

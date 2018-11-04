@@ -36,6 +36,8 @@ class ConfigTagsController < ApplicationController
 
   # DELETE /config_tags/1
   def destroy
+    return if unpermitted_delete(@config)
+
     @config_tag.destroy
   end
 
