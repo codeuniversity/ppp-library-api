@@ -25,15 +25,6 @@ class VotesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /votes/1
-  def update
-    if @vote.update(vote_params)
-      render json: @vote
-    else
-      render json: @vote.errors, status: :unprocessable_entity
-    end
-  end
-
   # DELETE /votes/1
   def destroy
     return if unpermitted_delete(@vote)

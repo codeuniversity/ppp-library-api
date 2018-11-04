@@ -1,7 +1,7 @@
 module AccessControl
   extend ActiveSupport::Concern
 
-  def deletable_by?(current_user)
+  def editable_by?(current_user)
     user == current_user
   end
 end

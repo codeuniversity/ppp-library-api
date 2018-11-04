@@ -27,15 +27,6 @@ class ConfigTagsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /config_tags/1
-  def update
-    if @config_tag.update(config_tag_params)
-      render json: @config_tag
-    else
-      render json: @config_tag.errors, status: :unprocessable_entity
-    end
-  end
-
   # DELETE /config_tags/1
   def destroy
     return if unpermitted_delete(@config_tag)

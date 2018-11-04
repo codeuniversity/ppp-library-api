@@ -32,6 +32,8 @@ class ConfigsController < ApplicationController
 
   # PATCH/PUT /configs/1
   def update
+    return if unpermitted_update(@config)
+
     if @config.update(config_params)
       render json: @config
     else

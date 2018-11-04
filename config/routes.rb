@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :config_tags
-  resources :categories
-  resources :votes
+  resources :config_tags, except: :update
+  resources :categories, except: :update
+  resources :votes, except: :update
   resources :configs
   mount_devise_token_auth_for 'User', at: 'auth', controllers: {
     omniauth_callbacks: "overrides/omniauth_callbacks",
