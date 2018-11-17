@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :config_tags, except: :update
   resources :categories, except: :update
-  resources :votes, except: :update
+  resources :votes, except: [:update, :index, :show]
   resources :configs do
     delete 'vote', module: 'configs', to: 'configs/votes#destroy'
     resources :categories, module: 'configs', only: :destroy

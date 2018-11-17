@@ -1,18 +1,6 @@
 class VotesController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
-  before_action :set_vote, only: [:show, :update, :destroy]
-
-  # GET /votes
-  def index
-    @votes = Vote.all
-
-    render json: @votes
-  end
-
-  # GET /votes/1
-  def show
-    render json: @vote
-  end
+  before_action :authenticate_user!
+  before_action :set_vote, only: :destroy
 
   # POST /votes
   def create
