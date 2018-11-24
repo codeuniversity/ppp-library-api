@@ -61,6 +61,6 @@ class ConfigsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def config_params
-      params.require(:config).permit(:title, :description, :script, :user_id)
+      params.require(:config).permit(:title, :description, :script, :user_id, :names_filter)
     end
 end

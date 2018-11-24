@@ -1,5 +1,5 @@
 class ConfigSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :script, :vote_count, :has_voted
+  attributes :id, :title, :description, :script, :vote_count, :has_voted, :names_filter
   belongs_to :user
   has_many :categories
 
