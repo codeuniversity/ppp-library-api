@@ -1,24 +1,21 @@
 # README
+This is a simple REST-Api to host configs, including scripts for the [profiler](https://github.com/codeuniversity/ppp-profiler).
+Includes authentication with omniauth (for now just with google) and voting for configs. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## setup
 
-Things you may want to cover:
+Install dependencies with [bundler](https://bundler.io/): `bundle`
 
-* Ruby version
+You need a locally runnning [postgres](https://www.postgresql.org/) instance.
 
-* System dependencies
+Create a `.env` file with credentials for a google project with the peoples api enabled and the `Authorised redirect URIs` including `http://localhost:3000/omniauth/google_oauth2/callback` for development:
+```
+GOOGLE_CLIENT_ID="..."
+GOOGLE_CLIENT_SECRET="..."
+```
 
-* Configuration
 
-* Database creation
+Create a new database: `bundle exec rails db:create`.
+Migrate the database with `bundle exec rails db:migrate`.
+Run the server with `bundle exec rails s`.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
